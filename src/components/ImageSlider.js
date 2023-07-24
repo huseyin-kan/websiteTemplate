@@ -40,9 +40,10 @@ const ImageSlider = () => {
     }
 
     return(
-        <div className="max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group">
+        <div className="max-w-full h-[780px] w-full m-auto relative group">
             {/* Images */}
-            <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className="w-full h-full rounded-2xl bg-center bg-cover duration-500"></div>
+            <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className="w-full h-full bg-center bg-cover duration-500">
+            </div>
 
             {/* Left Arrow */}
             <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[-50%] left-5 text-2xl rounded-full bg-black/20 text-white cursor-pointer">
@@ -55,16 +56,15 @@ const ImageSlider = () => {
             </div>
 
             {/* Dots */}
-            <div className="flex top-4 justify-center py-2">
-                {slides.map((slide, slideIndex) => (
+            <div className="flex justify-center absolute top-[94%] w-full mx-auto">
+                    {slides.map((slide, slideIndex) => (
                     <div
-                        key={slideIndex} 
+                        key={slideIndex}
                         onClick={() => goToSlide(slideIndex)} 
-                        className="text-2xl cursor-pointer"
+                        className={`text-2xl cursor-pointer h-5 w-5 rounded-full mx-2 ${slideIndex === currentIndex ? "bg-red-500" : "bg-orange-400"} `}
                     >
-                        <RxDotFilled />
                     </div>
-                ))}
+                    ))}
             </div>
         </div>
     )
